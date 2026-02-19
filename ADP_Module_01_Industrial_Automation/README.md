@@ -248,7 +248,7 @@ When we talk about industrial automation systems, we often come across the conce
      alt=" image lost : Mikron Automation - Pharmaceutical Technology"
      width="400">
   <figcaption>High speed assembly machine, about 1 [ms]
-, Source: <a href="https://www.mikron.com/en/automation/systems/">Micron</a></figcaption>
+, Source: <a href="https://www.mikron.com/en/automation/systems/">Mikron</a></figcaption>
 </figure>
 </div>
 
