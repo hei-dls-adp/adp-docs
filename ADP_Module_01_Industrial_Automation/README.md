@@ -56,7 +56,7 @@ In this first module, we will first make the link with what we can consider as l
   <img src="./img/End-to-End Automated NMR and LCMS Sample Preparation.png"
      alt="Image lost: End-to-End Automated NMR and LCMS Sample Preparation.png"
      width="400">
-  <figcaption>Chemspeed End-to-End Automated NMR and LCMS Sample Preparation. Souerce: <a href="https://www.chemspeed.com/example-solutions/end-to-end-nmr-and-lcms-sample-preparation/">Chemspeed</a></figcaption>
+  <figcaption>Chemspeed End-to-End Automated NMR and LCMS Sample Preparation. Source: <a href="https://www.chemspeed.com/example-solutions/end-to-end-nmr-and-lcms-sample-preparation/">Chemspeed</a></figcaption>
 </figure>
 </div>
 
@@ -213,10 +213,10 @@ When we talk about industrial automation systems, we often come across the conce
 
 | Application | Cycle Time / Sampling Rate        |
 |-------------|:---------------------------------:|
-| Voice on smartphone           | < 0.1 ms (16 kHz) |
-| Robot position control / assembly machine     | 1 ms|
-| Temperature regulation, e.g. small bioreactor| 1 s|
-| Piece counting on conveyor, 600/min| 10 ms |
+| Voice on smartphone           | < 0.1 $ms$ ~$(16 kHz)$ |
+| Robot position control / assembly machine     | 1 $ms$|
+| Temperature regulation, e.g. small bioreactor| 1 $s$|
+| Piece counting on conveyor, 6 $m/min$| 10 $ms$ |
 
 #### Temperature regulation of a bioreactor
 
@@ -563,11 +563,13 @@ As Modbus is ultimately rudimentary and simple to implement for the manufacturer
 </figure>
 </div>
 
+## IO-Link
+We have seen IO-Link when speaking about [IEC-61131-9](#61131-9).
+
+
 When each supplier can propose its own register organisation, IO-Link is very well organized with a centralized website with the data structure of every supplier. Some software can download directly the structure of the data from this website. 
 The [IODD, IO Device Description](https://io-link.com/technology/iodd) is a powerful tool that significantly simplifies the commissioning, operation, and maintenance of an IO-Link systems. [See IO-Finder too](https://ioddfinder.io-link.com).
 
-## IO-Link
-We have seen IO-Link when speaking about [IEC-61131-9](#61131-9).
 
 <div align="center">
 <figure>
