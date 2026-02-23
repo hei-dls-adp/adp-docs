@@ -7,7 +7,7 @@
 
 Author: [Cédric Lenoir](mailto:cedric.lenoir@hevs.ch)
 
-# Module 02 PLC Quick Start
+# Module 02 PLC programming quick start
 
 *Keywords:* **Variables / Instructions / Cycle Time / Types / Triggers / Timers**
 
@@ -65,7 +65,7 @@ For representing physical contacts. Typically, for example, to represent the sta
 ### The Sequential Function Chart SFC
 **Derived from the mathematical model of Petri nets**. Can be useful for representing a process that occurs according to a list of well-defined and uncomplicated sequences. Quickly becomes unmanageable if the number of sequences increases. Its use is anecdotal. We will not use it.
 
-> This language can be very usefull for procedural control, that is, for something else than strict cyclical programming. But this is out of the scope of this course.
+> This language can be very useful for procedural control, that is, for something else than strict cyclical programming. But this is out of the scope of this course.
 
 <div align="center">
 <figure>
