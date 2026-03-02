@@ -7,13 +7,13 @@
 
 Author: [Cédric Lenoir](mailto:cedric.lenoir@hevs.ch)
 
-# Some exercises.
+# Some exercises for Module 03.
 
 ## Read this document.
 
 How to start a flow?
 
-- See this document
+- [See this document](MethodToStartNodeRedFlow.md)
 
 ## Working locally
 
@@ -24,13 +24,13 @@ You must be able to launch the flow located on the module's Git repository using
 
 ### Inject / Debug
 
-View the Debug window.
+- View the Debug window.
 
-Add an Inject node with its name and view its name in the debug window.
+- Add an Inject node with its name and view its name in the debug window.
 
-Import the HelloWorld.json flow from the Git repository: ``adp-docs\ADP_Module_03_Flow_Based_Programming\node_flows`` and run it.
+- Import the HelloWorld.json flow from the Git repository: ``adp-docs\ADP_Module_03_Flow_Based_Programming\node_flows`` and run it.
 
-Clean up the debug window.
+- Clean up the debug window.
 
 ### change
 

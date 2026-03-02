@@ -7,6 +7,16 @@
 
 Author: [Cédric Lenoir](mailto:cedric.lenoir@hevs.ch)
 
+
+## Table of Contents
+
+- [How to start a flow ?](#how-to-start-a-flow-)
+  - [Default](#default)
+  - [What always works on PC](#what-always-works-on-pc)
+  - [What I recommend](#what-i-recommend)
+  - [Other alternative](#other-alternative)
+- [Option](#option)
+
 # How to start a flow ?
 
 When writing this course, we have experienced many issues to start Node-RED with the right flow.
