@@ -818,7 +818,8 @@ In the example above, depending of the value of `payload`, the `switch` will sen
 The node will route a message to all outputs corresponding to matching rules. But it can also be configured to stop evaluating rules when it finds one that matches.
 
 ## Sequence nodes
-:no_bell: *for information only*
+
+[More details below](#working-with-sequences).
 
 Nodes allowing you to act on the sequence of transmitted messages and thus influence the flow.
 
@@ -861,9 +862,9 @@ Nodes allowing you to act on the sequence of transmitted messages and thus influ
 
  Examples:
 
-Allows you to split an incoming message into multiple outgoing messages.
+- Allows you to split an incoming message into multiple outgoing messages.
 
-Allows you to group multiple incoming messages into a single outgoing message.
+- Allows you to group multiple incoming messages into a single outgoing message.
 
 ## Network nodes
 :no_bell: *for information only*
@@ -1005,6 +1006,7 @@ So:
 ```
 
 ### Changing message properties
+:no_bell: information only
 
 A common task in a flow is to modify the properties of a message as it passes between nodes. For example, the result of an HTTP Request may be an object with many properties, of which only some are needed.
 
@@ -1016,10 +1018,10 @@ The Change node provides a lot of functionality without needing to write JavaScr
 
 It provides four basic operations:
 
-    Set a property to a value,
-    Change a String property by performing a search and replace,
-    Delete a property,
-    Move a property.
+- Set a property to a value,
+- Change a String property by performing a search and replace,
+- Delete a property,
+- Move a property.
 
 For the set operation, you first identify what property you want to set, then the value you want it to have. That value can either be a hardcoded value, such as a string or number, or it can be taking from another message or flow/global context property. It also supports using the JSONata expression language to calculate a new value.
 
@@ -1028,22 +1030,11 @@ For example, using the Debug node’s ability to determine a message element’s
 
 Another example, using a JSONata expression, is to convert a temperature, held in msg.payload.temperature, from Fahrenheit to Celsius and store the result in a new message property msg.payload.temperature_c.
 
+---
+
 ### Message sequences
 
 A message sequence is an ordered series of messages that are related in some way. For example, the Split node can turn a single message whose payload is an Array, into a message sequence where each message has a payload corresponding to one of the array elements.
-
-Understanding msg.parts
-
-Each message in a sequence has a property called msg.parts. This is an object that contains information how the message fits in the sequence. It has the following properties:
-
-msg.parts.id
-    a unique identifier for the sequence
-msg.parts.index
-    the message's position within the sequence
-msg.parts.count
-    if known, the total number of messages in the sequence
-
-Note: the parts array may contain additional meta-data about the sequence. For example, the split node also attaches information that can be used by the join node to reassemble the sequence. See the split node’s documentation.
 
 ### Working with sequences
 
@@ -1056,55 +1047,123 @@ Note: the parts array may contain additional meta-data about the sequence. For e
 
 There are a number of core nodes that can work across message sequences:
 
+---
+
 #### Split
+
+<figure>
+    <img src="./img/Node-split.png"
+         alt="Image lost: Node-split.png"
+         width="200">
+  <figcaption>Node split</figcaption>
+</figure>
 
 Turns a single message into a sequence of messages.
 
 The exact behaviour of the node depends on the type of msg.payload:
 
-String/Buffer
-    the message is split using the specified character (default: `\n`), buffer sequence or into fixed lengths.
-Array
-    the message is split into either individual array elements, or arrays of a fixed-length.
-Object
-    a message is sent for each key/value pair of the object.
+##### String/Buffer
+    
+The message is split using the specified character (default: `\n`), buffer sequence or into fixed lengths.
+##### Array
+
+The message is split into either individual array elements, or arrays of a fixed-length.
+##### Object
+
+A message is sent for each key/value pair of the object.
+
+**Exemple 1**
+
+```msg.payload = {"name": "Alice", "age": 30}```.
+Outputs are two consecutive messages with: ``Alice`` and ``30``.
+
+**Exemple 2**
+
+```msg.payload = ["Red", "Orange", "Green"]```.
+
+Outputs are two consecutive messages with: ``Red``, ``Orange`` and ``Green``.
+
+---
 
 #### Join
 
 Turns a sequence of messages into a single message.
 
+<figure>
+    <img src="./img/Node-join.png"
+         alt="Image lost: Node-join.png"
+         width="200">
+  <figcaption>Node join</figcaption>
+</figure>
+
 The node provides three modes of operation:
 
-Automatic
-    attempts to reverse the action of a previous Split node
-Manual
-    allows finer control on how the sequence should be joined
-Reduce
-    New in 0.18 - allows a JSONata expression to be run against each message in the sequence and the result accumulated to produce a single message.
+##### Automatic
+Attempts to reverse the action of a previous Split node
+##### Manual
+Allows finer control on how the sequence should be joined
+##### Reduce
+
+Allows a JSONata expression to be run against each message in the sequence and the result accumulated to produce a single message.
+
+**Exemple**
+
+In the message set we use a JSONata expression with : ``'Color: ' & payload``, it allows to modify the payload ```msg.payload = ["Red", "Orange", "Green"]``` to
+
+``["Color: Red","Color: Orange","Color: Green"]``
+
+The message is split, we add Color, then we join it again.
+
+<figure>
+    <img src="./img/Split_Join.png"
+         alt="Image lost: Node-split.png"
+         width="600">
+  <figcaption>Node join / split</figcaption>
+</figure>
+
+
+---
 
 #### Sort
 
-New in 0.18
+You can use sort for a single message like this one: 
 
-Sorts the sequence based on a property value or JSONata expression result.
+``msg.payload = ["Alice","Sophie","Julie"]``
+With sort, you will get a payload like this one:
+
+``["Alice","Julie","Sophie"]``
+
+---
 
 #### Batch
+
+:no_bell: *for information only*
 
 Creates new sequences of messages from those received.
 
 The node provides three modes of operation:
 
-Number of messages
-    groups messages into sequences of a given length. The overlap option specifies how many messages at the end of one sequence should be repeated at the start of the next sequence.
-Time interval
-    groups messages that arrive within the specified interval. If no messages arrive within the interval, the node can optionally send on an empty message.
-Concatenate Sequences
-    creates a message sequence by concatenating incoming sequences. Each sequence must have a msg.topic property to identify it. The node is configured with a list of topic values to identify the order sequences are concatenated. 
+**Number of messages**
+Groups messages into sequences of a given length. The overlap option specifies how many messages at the end of one sequence should be repeated at the start of the next sequence.
+**Time interval**
+Groups messages that arrive within the specified interval. If no messages arrive within the interval, the node can optionally send on an empty message.
+
+**Concatenate Sequences**
+Creates a message sequence by concatenating incoming sequences. Each sequence must have a msg.topic property to identify it. The node is configured with a list of topic values to identify the order sequences are concatenated. 
+
+---
 
 ## JSONata expression ?
+Not a part of this course. We used it above to add the ""Color"" Component in the [Join](#join) example. ``JSONdata: "Color: " & payload``.
+
+
+---
 
 ## Your job
 Install Node-RED on your laptop. Use this link to get guided about the procedure: [Running Node-RED locally](https://nodered.org/docs/getting-started/local)
+
+- [Run node-red](./MethodToStartNodeRedFlow.md).
+- Try [some exercices](SomeExercices.md).
 
 ### About the tools
 <figure>
@@ -1139,3 +1198,6 @@ The NPM repository currently contains millions of packages and modules.
 Downloading and managing packages from NPM uses your system's command-line interface. By default, this utility is automatically configured after Node.js installation.
 
 <!-- End of README.md -->
+
+
+{}

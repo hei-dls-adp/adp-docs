@@ -1,0 +1,567 @@
+[
+    {
+        "id": "17cb6abbe903c89b",
+        "type": "tab",
+        "label": "Flow 3",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "cdd8eabb6d15742a",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "53305ae53f81b77b",
+        "type": "group",
+        "z": "17cb6abbe903c89b",
+        "style": {
+            "stroke": "#999999",
+            "stroke-opacity": "1",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "label-position": "nw",
+            "color": "#a4a4a4"
+        },
+        "nodes": [
+            "1852bd65de069ef0",
+            "3f1450742b85a356"
+        ],
+        "x": 34,
+        "y": 159,
+        "w": 652,
+        "h": 82
+    },
+    {
+        "id": "c4abe2be0fc6d270",
+        "type": "group",
+        "z": "17cb6abbe903c89b",
+        "name": "",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "d2b330ed93df35a0",
+            "81e48eeb776da060",
+            "4d5a8d75274a52cb",
+            "bc29323e88a50bcf",
+            "383681e436fb63bd",
+            "7ecf6ea61e602965",
+            "66714a4a961e899e"
+        ],
+        "env": [
+            {
+                "name": "This_Group",
+                "value": "4",
+                "type": "num"
+            }
+        ],
+        "x": 54,
+        "y": 279,
+        "w": 952,
+        "h": 262
+    },
+    {
+        "id": "b64eaafad00cc4b9",
+        "type": "ctrlx-config",
+        "name": "CtrlX Student",
+        "hostname": "ctrlx01.hevs.ch",
+        "debug": false
+    },
+    {
+        "id": "d2d117c7e0b9850e",
+        "type": "ctrlx-config-subscription",
+        "device": "b64eaafad00cc4b9",
+        "name": "CtrlX Student",
+        "publishIntervalMs": "",
+        "publishIntervalUnits": "seconds",
+        "samplingInterval": "",
+        "samplingIntervalUnits": "seconds",
+        "errorInterval": "",
+        "errorIntervalUnits": "seconds",
+        "keepaliveInterval": "",
+        "keepaliveIntervalUnits": "minutes",
+        "queueSize": "",
+        "queueBehaviour": "DiscardOldest",
+        "deadbandValue": ""
+    },
+    {
+        "id": "1852bd65de069ef0",
+        "type": "ctrlx-datalayer-subscribe",
+        "z": "17cb6abbe903c89b",
+        "d": true,
+        "g": "53305ae53f81b77b",
+        "subscription": "d2d117c7e0b9850e",
+        "path": "plc/app/Application/sym/Unit_01/uliLoop",
+        "name": "",
+        "inputs": 0,
+        "x": 210,
+        "y": 200,
+        "wires": [
+            [
+                "3f1450742b85a356"
+            ]
+        ]
+    },
+    {
+        "id": "3f1450742b85a356",
+        "type": "debug",
+        "z": "17cb6abbe903c89b",
+        "d": true,
+        "g": "53305ae53f81b77b",
+        "name": "Loop from PLC",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 560,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "8a86c88a3a6fc0d6",
+        "type": "inject",
+        "z": "17cb6abbe903c89b",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 80,
+        "wires": [
+            [
+                "554378794e64dcce"
+            ]
+        ]
+    },
+    {
+        "id": "554378794e64dcce",
+        "type": "debug",
+        "z": "17cb6abbe903c89b",
+        "name": "time stamp",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 350,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "d2b330ed93df35a0",
+        "type": "inject",
+        "z": "17cb6abbe903c89b",
+        "g": "c4abe2be0fc6d270",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "[\"Alice\",\"Sophie\",\"Julie\"]",
+        "payloadType": "json",
+        "x": 170,
+        "y": 320,
+        "wires": [
+            [
+                "bc29323e88a50bcf",
+                "81e48eeb776da060"
+            ]
+        ]
+    },
+    {
+        "id": "81e48eeb776da060",
+        "type": "debug",
+        "z": "17cb6abbe903c89b",
+        "g": "c4abe2be0fc6d270",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 340,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "4d5a8d75274a52cb",
+        "type": "comment",
+        "z": "17cb6abbe903c89b",
+        "g": "c4abe2be0fc6d270",
+        "name": "Node-RED says Hello !",
+        "info": "# Some documentation\n\nHere you should explain what you are doing.\n\n|A table|Label|\n|-------|-----|\n|N°1    |Example|\n\n```mermaid\nflowchart LR\n    Start --> Stop\n\n```",
+        "x": 180,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "bc29323e88a50bcf",
+        "type": "sort",
+        "z": "17cb6abbe903c89b",
+        "g": "c4abe2be0fc6d270",
+        "name": "",
+        "order": "ascending",
+        "as_num": false,
+        "target": "payload",
+        "targetType": "msg",
+        "msgKey": "payload",
+        "msgKeyType": "elem",
+        "seqKey": "payload",
+        "seqKeyType": "msg",
+        "x": 330,
+        "y": 320,
+        "wires": [
+            [
+                "66714a4a961e899e"
+            ]
+        ]
+    },
+    {
+        "id": "383681e436fb63bd",
+        "type": "debug",
+        "z": "17cb6abbe903c89b",
+        "g": "c4abe2be0fc6d270",
+        "name": "Sorted message.",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "jsonata",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 870,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "7ecf6ea61e602965",
+        "type": "change",
+        "z": "17cb6abbe903c89b",
+        "g": "c4abe2be0fc6d270",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "\"Color: \" & payload",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 640,
+        "y": 320,
+        "wires": [
+            [
+                "383681e436fb63bd"
+            ]
+        ]
+    },
+    {
+        "id": "66714a4a961e899e",
+        "type": "split",
+        "z": "17cb6abbe903c89b",
+        "g": "c4abe2be0fc6d270",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "property": "payload",
+        "x": 470,
+        "y": 320,
+        "wires": [
+            [
+                "7ecf6ea61e602965"
+            ]
+        ]
+    },
+    {
+        "id": "d2f0af75c7dc55ac",
+        "type": "inject",
+        "z": "cdd8eabb6d15742a",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 120,
+        "y": 200,
+        "wires": [
+            [
+                "b2c616084b233aea",
+                "b5363363135fe1c5"
+            ]
+        ]
+    },
+    {
+        "id": "b2c616084b233aea",
+        "type": "link call",
+        "z": "cdd8eabb6d15742a",
+        "name": "",
+        "links": [
+            "5e699c0835af54c4"
+        ],
+        "linkType": "static",
+        "timeout": "3",
+        "x": 350,
+        "y": 200,
+        "wires": [
+            [
+                "4028aa745863fa70"
+            ]
+        ]
+    },
+    {
+        "id": "4028aa745863fa70",
+        "type": "debug",
+        "z": "cdd8eabb6d15742a",
+        "name": "Debug Call Three",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 630,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "77ad3fda84ecdbe5",
+        "type": "function",
+        "z": "cdd8eabb6d15742a",
+        "name": "Test function",
+        "func": "msg.payload = \"payload of test function\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 350,
+        "y": 60,
+        "wires": [
+            [
+                "bf95d72c3b0ba9d8"
+            ]
+        ]
+    },
+    {
+        "id": "5e699c0835af54c4",
+        "type": "link in",
+        "z": "cdd8eabb6d15742a",
+        "name": "Test In",
+        "links": [],
+        "x": 195,
+        "y": 60,
+        "wires": [
+            [
+                "77ad3fda84ecdbe5"
+            ]
+        ]
+    },
+    {
+        "id": "8d2380bd9fd72ee5",
+        "type": "link out",
+        "z": "cdd8eabb6d15742a",
+        "name": "Test Out",
+        "mode": "return",
+        "links": [],
+        "x": 705,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "adc7aafcc5eb9073",
+        "type": "catch",
+        "z": "cdd8eabb6d15742a",
+        "name": "",
+        "scope": null,
+        "uncaught": false,
+        "x": 160,
+        "y": 280,
+        "wires": [
+            [
+                "ec5c7f88f161f48a"
+            ]
+        ]
+    },
+    {
+        "id": "ec5c7f88f161f48a",
+        "type": "change",
+        "z": "cdd8eabb6d15742a",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "No answer from test function",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 380,
+        "y": 280,
+        "wires": [
+            [
+                "33a9dd83f774a1af"
+            ]
+        ]
+    },
+    {
+        "id": "33a9dd83f774a1af",
+        "type": "debug",
+        "z": "cdd8eabb6d15742a",
+        "name": "Check Time Out",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 620,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "c0f430be9bfd1562",
+        "type": "debug",
+        "z": "cdd8eabb6d15742a",
+        "name": "Test Function",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 610,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "a2eeb6714bf505a1",
+        "type": "link in",
+        "z": "cdd8eabb6d15742a",
+        "name": "link in 1",
+        "links": [],
+        "x": 405,
+        "y": 120,
+        "wires": [
+            [
+                "c0f430be9bfd1562"
+            ]
+        ]
+    },
+    {
+        "id": "b5363363135fe1c5",
+        "type": "debug",
+        "z": "cdd8eabb6d15742a",
+        "name": "To Check Id",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 230,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "bf95d72c3b0ba9d8",
+        "type": "delay",
+        "z": "cdd8eabb6d15742a",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 540,
+        "y": 60,
+        "wires": [
+            [
+                "8d2380bd9fd72ee5"
+            ]
+        ]
+    }
+]
