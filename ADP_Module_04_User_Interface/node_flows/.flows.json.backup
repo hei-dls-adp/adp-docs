@@ -91,6 +91,95 @@
         "deadbandValue": ""
     },
     {
+        "id": "09d0214ebb8d4809",
+        "type": "ui-base",
+        "name": "My Dashboard",
+        "path": "/dashboard",
+        "appIcon": "",
+        "includeClientData": true,
+        "acceptsClientConfig": [
+            "ui-notification",
+            "ui-control"
+        ],
+        "showPathInSidebar": false,
+        "headerContent": "page",
+        "navigationStyle": "default",
+        "titleBarStyle": "default",
+        "showReconnectNotification": true,
+        "notificationDisplayTime": 1,
+        "showDisconnectNotification": true,
+        "allowInstall": false
+    },
+    {
+        "id": "b26d9d99ec81b10b",
+        "type": "ui-theme",
+        "name": "Default Theme",
+        "colors": {
+            "surface": "#ffffff",
+            "primary": "#0094CE",
+            "bgPage": "#eeeeee",
+            "groupBg": "#ffffff",
+            "groupOutline": "#cccccc"
+        },
+        "sizes": {
+            "density": "default",
+            "pagePadding": "12px",
+            "groupGap": "12px",
+            "groupBorderRadius": "4px",
+            "widgetGap": "12px"
+        }
+    },
+    {
+        "id": "2a995a8a383d7820",
+        "type": "ui-page",
+        "name": "Page 1",
+        "ui": "09d0214ebb8d4809",
+        "path": "/page1",
+        "icon": "home",
+        "layout": "grid",
+        "theme": "b26d9d99ec81b10b",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": 0,
+                "cols": 3
+            },
+            {
+                "name": "Tablet",
+                "px": 576,
+                "cols": 6
+            },
+            {
+                "name": "Small Desktop",
+                "px": 768,
+                "cols": 9
+            },
+            {
+                "name": "Desktop",
+                "px": 1024,
+                "cols": 12
+            }
+        ],
+        "order": 1,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "d25f8e49388ba929",
+        "type": "ui-group",
+        "name": "Group 1",
+        "page": "2a995a8a383d7820",
+        "width": 6,
+        "height": 1,
+        "order": 1,
+        "showTitle": true,
+        "className": "",
+        "visible": true,
+        "disabled": false,
+        "groupType": "default"
+    },
+    {
         "id": "1852bd65de069ef0",
         "type": "ctrlx-datalayer-subscribe",
         "z": "17cb6abbe903c89b",
@@ -327,13 +416,66 @@
         "type": "ctrlx-datalayer-subscribe",
         "z": "7eab1bb07622109b",
         "subscription": "d2d117c7e0b9850e",
-        "path": "",
+        "path": "plc/app/Application/sym/Unit_01/diLoop",
         "name": "",
         "inputs": 0,
-        "x": 180,
+        "x": 230,
         "y": 80,
         "wires": [
-            []
+            [
+                "7905961a26176c0d",
+                "fc7b8128b97d5eb4"
+            ]
         ]
+    },
+    {
+        "id": "7905961a26176c0d",
+        "type": "ui-text",
+        "z": "7eab1bb07622109b",
+        "group": "d25f8e49388ba929",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "My Loop : ",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#717171",
+        "wrapText": false,
+        "className": "",
+        "value": "payload",
+        "valueType": "msg",
+        "x": 560,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "066d22842d02db47",
+        "type": "comment",
+        "z": "7eab1bb07622109b",
+        "name": "Login + Password",
+        "info": "Actual Login is: dls-adp-student\nPassword for 2026 is: ask for it",
+        "x": 170,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "fc7b8128b97d5eb4",
+        "type": "debug",
+        "z": "7eab1bb07622109b",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 560,
+        "y": 140,
+        "wires": []
     }
 ]

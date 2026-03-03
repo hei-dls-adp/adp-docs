@@ -1,13 +1,5 @@
 [
     {
-        "id": "17cb6abbe903c89b",
-        "type": "tab",
-        "label": "Flow 3",
-        "disabled": false,
-        "info": "",
-        "env": []
-    },
-    {
         "id": "7eab1bb07622109b",
         "type": "tab",
         "label": "To From CtrlX",
@@ -16,9 +8,17 @@
         "env": []
     },
     {
-        "id": "53305ae53f81b77b",
+        "id": "17cb6abbe903c89b",
+        "type": "tab",
+        "label": "Flow 3",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "b473bd64dadbb042",
         "type": "group",
-        "z": "17cb6abbe903c89b",
+        "z": "7eab1bb07622109b",
         "style": {
             "stroke": "#999999",
             "stroke-opacity": "1",
@@ -29,42 +29,15 @@
             "color": "#a4a4a4"
         },
         "nodes": [
-            "1852bd65de069ef0",
-            "3f1450742b85a356"
+            "bf99692b65dcac8a",
+            "7905961a26176c0d",
+            "066d22842d02db47",
+            "fc7b8128b97d5eb4"
         ],
         "x": 34,
-        "y": 159,
-        "w": 652,
-        "h": 82
-    },
-    {
-        "id": "c4abe2be0fc6d270",
-        "type": "group",
-        "z": "17cb6abbe903c89b",
-        "name": "",
-        "style": {
-            "label": true
-        },
-        "nodes": [
-            "d2b330ed93df35a0",
-            "81e48eeb776da060",
-            "4d5a8d75274a52cb",
-            "bc29323e88a50bcf",
-            "383681e436fb63bd",
-            "7ecf6ea61e602965",
-            "66714a4a961e899e"
-        ],
-        "env": [
-            {
-                "name": "This_Group",
-                "value": "4",
-                "type": "num"
-            }
-        ],
-        "x": 54,
-        "y": 279,
-        "w": 952,
-        "h": 262
+        "y": 39,
+        "w": 612,
+        "h": 182
     },
     {
         "id": "b64eaafad00cc4b9",
@@ -180,40 +153,74 @@
         "groupType": "default"
     },
     {
-        "id": "1852bd65de069ef0",
+        "id": "bf99692b65dcac8a",
         "type": "ctrlx-datalayer-subscribe",
-        "z": "17cb6abbe903c89b",
-        "d": true,
-        "g": "53305ae53f81b77b",
+        "z": "7eab1bb07622109b",
+        "g": "b473bd64dadbb042",
         "subscription": "d2d117c7e0b9850e",
-        "path": "plc/app/Application/sym/Unit_01/uliLoop",
+        "path": "plc/app/Application/sym/Unit_01/diLoop",
         "name": "",
         "inputs": 0,
         "x": 210,
-        "y": 200,
+        "y": 80,
         "wires": [
             [
-                "3f1450742b85a356"
+                "7905961a26176c0d",
+                "fc7b8128b97d5eb4"
             ]
         ]
     },
     {
-        "id": "3f1450742b85a356",
+        "id": "7905961a26176c0d",
+        "type": "ui-text",
+        "z": "7eab1bb07622109b",
+        "g": "b473bd64dadbb042",
+        "group": "d25f8e49388ba929",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "My Loop : ",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#717171",
+        "wrapText": false,
+        "className": "",
+        "value": "payload",
+        "valueType": "msg",
+        "x": 540,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "066d22842d02db47",
+        "type": "comment",
+        "z": "7eab1bb07622109b",
+        "g": "b473bd64dadbb042",
+        "name": "Login + Password",
+        "info": "Actual Login is: dls-adp-student\nPassword for 2026 is: ask for it",
+        "x": 150,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "fc7b8128b97d5eb4",
         "type": "debug",
-        "z": "17cb6abbe903c89b",
-        "d": true,
-        "g": "53305ae53f81b77b",
-        "name": "Loop from PLC",
+        "z": "7eab1bb07622109b",
+        "g": "b473bd64dadbb042",
+        "name": "debug 1",
         "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
+        "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 560,
-        "y": 200,
+        "x": 540,
+        "y": 140,
         "wires": []
     },
     {
@@ -260,205 +267,6 @@
         "statusType": "auto",
         "x": 350,
         "y": 80,
-        "wires": []
-    },
-    {
-        "id": "d2b330ed93df35a0",
-        "type": "inject",
-        "z": "17cb6abbe903c89b",
-        "g": "c4abe2be0fc6d270",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "[\"Alice\",\"Sophie\",\"Julie\"]",
-        "payloadType": "json",
-        "x": 170,
-        "y": 320,
-        "wires": [
-            [
-                "bc29323e88a50bcf",
-                "81e48eeb776da060"
-            ]
-        ]
-    },
-    {
-        "id": "81e48eeb776da060",
-        "type": "debug",
-        "z": "17cb6abbe903c89b",
-        "g": "c4abe2be0fc6d270",
-        "name": "debug 4",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 340,
-        "y": 420,
-        "wires": []
-    },
-    {
-        "id": "4d5a8d75274a52cb",
-        "type": "comment",
-        "z": "17cb6abbe903c89b",
-        "g": "c4abe2be0fc6d270",
-        "name": "Node-RED says Hello !",
-        "info": "# Some documentation\n\nHere you should explain what you are doing.\n\n|A table|Label|\n|-------|-----|\n|N°1    |Example|\n\n```mermaid\nflowchart LR\n    Start --> Stop\n\n```",
-        "x": 180,
-        "y": 500,
-        "wires": []
-    },
-    {
-        "id": "bc29323e88a50bcf",
-        "type": "sort",
-        "z": "17cb6abbe903c89b",
-        "g": "c4abe2be0fc6d270",
-        "name": "",
-        "order": "ascending",
-        "as_num": false,
-        "target": "payload",
-        "targetType": "msg",
-        "msgKey": "payload",
-        "msgKeyType": "elem",
-        "seqKey": "payload",
-        "seqKeyType": "msg",
-        "x": 330,
-        "y": 320,
-        "wires": [
-            [
-                "66714a4a961e899e"
-            ]
-        ]
-    },
-    {
-        "id": "383681e436fb63bd",
-        "type": "debug",
-        "z": "17cb6abbe903c89b",
-        "g": "c4abe2be0fc6d270",
-        "name": "Sorted message.",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "jsonata",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 870,
-        "y": 320,
-        "wires": []
-    },
-    {
-        "id": "7ecf6ea61e602965",
-        "type": "change",
-        "z": "17cb6abbe903c89b",
-        "g": "c4abe2be0fc6d270",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "\"Color: \" & payload",
-                "tot": "jsonata"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 640,
-        "y": 320,
-        "wires": [
-            [
-                "383681e436fb63bd"
-            ]
-        ]
-    },
-    {
-        "id": "66714a4a961e899e",
-        "type": "split",
-        "z": "17cb6abbe903c89b",
-        "g": "c4abe2be0fc6d270",
-        "name": "",
-        "splt": "\\n",
-        "spltType": "str",
-        "arraySplt": 1,
-        "arraySpltType": "len",
-        "stream": false,
-        "addname": "",
-        "property": "payload",
-        "x": 470,
-        "y": 320,
-        "wires": [
-            [
-                "7ecf6ea61e602965"
-            ]
-        ]
-    },
-    {
-        "id": "bf99692b65dcac8a",
-        "type": "ctrlx-datalayer-subscribe",
-        "z": "7eab1bb07622109b",
-        "subscription": "d2d117c7e0b9850e",
-        "path": "plc/app/Application/sym/Unit_01/uliLoop",
-        "name": "",
-        "inputs": 0,
-        "x": 230,
-        "y": 80,
-        "wires": [
-            [
-                "7905961a26176c0d"
-            ]
-        ]
-    },
-    {
-        "id": "7905961a26176c0d",
-        "type": "ui-text",
-        "z": "7eab1bb07622109b",
-        "group": "d25f8e49388ba929",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "name": "",
-        "label": "My Loop",
-        "format": "{{msg.payload}}",
-        "layout": "row-left",
-        "style": false,
-        "font": "",
-        "fontSize": 16,
-        "color": "#717171",
-        "wrapText": false,
-        "className": "",
-        "value": "payload",
-        "valueType": "msg",
-        "x": 560,
-        "y": 80,
-        "wires": []
-    },
-    {
-        "id": "066d22842d02db47",
-        "type": "comment",
-        "z": "7eab1bb07622109b",
-        "name": "Login + Password",
-        "info": "Actual Login is: dls-adp-student\nPassword for 2026 is: ask for it",
-        "x": 170,
-        "y": 180,
         "wires": []
     }
 ]
