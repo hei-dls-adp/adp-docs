@@ -677,7 +677,11 @@ In a simple form, will display the text comming thru a ``msg.payload``.
 
 ---
 
+## Exercices with UI
+[Some exercises for Module 04](SomeExercices_WithUI.md)
 
 
+## PLC project
+About [the PLC project for this module](./plc_base/PracticalWork_Module_04_UI.md).
 
 <!-- End of README.md -->

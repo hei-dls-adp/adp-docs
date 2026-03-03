@@ -184,14 +184,16 @@ Build this UI. Not linked with the PLC
 </figure>
 </div>
 
-### Afficher un tableau de LREAL command Param + un tableau qui permette de modifier un paramètre.
+### DINTcommand Param
++ an array that allows a parameter to be modified.
+:no_bell: skip this exercise.
 
-### Afficher un tableau Markdown et y insérer les graphiques suivants
--	Flow Diagram
--	State Diagram
--	Class Diagram
+### Markdown
+Display a Markdown table and insert the following graphs. There are examples of mermaid tables below.
 
-### Afficher un sélecteur Auto/Manu
+-	[Flow Diagram](#flow-diagram)
+-	[State Diagram](#state-diagram)
+-	[Class Diagram](#class-diagram)
 
 
 ### Write parameters for a signal generator.
@@ -204,7 +206,7 @@ plc/app/Application/sym/Unit_01/fbGenerator/GetSignal
 ```
 
 
-The code to insert in a flow [to select the type of signal](#code-to-select-type-pf-signal) is given below.
+The code to insert in a flow [to select the type of signal](#code-to-select-type-pf-signal) is given below. *Because it uses a method and we will speak about methods later in this course*.
 
 Build the UI for a signal generator like this one.
 
@@ -223,6 +225,7 @@ Build the UI for a signal generator like this one.
 
 We use Mermaid diagrams because their script format is recognized by Markdown files, they can be used to document any software on GitHub and can be displayed in Node-RED with a Markdown node.
 
+---
 
 ## Flow diagram 
 
@@ -243,6 +246,7 @@ flowchart TD
 
 </div>
 
+---
 
 ## State diagram
 Unlike the flowchart mentioned above, the state diagram is much more precise. The states and transition conditions shown in the diagram often correspond exactly to what is found in the program. Furthermore, an AI can generate code very efficiently from a state diagram. 
@@ -261,6 +265,8 @@ stateDiagram-v2
   Aborted --> Stopped : Clear
 ```
 </div>
+
+---
 
 ## Class diagram
 While a state diagram represents a program's behavior, a class diagram represents its structure. A class diagram corresponds to precise and standardized code. It is essential for working efficiently in object-oriented programming. One can simply represent the classes and their inheritance, or delve into the details and scope of variables.
