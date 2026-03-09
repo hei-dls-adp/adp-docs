@@ -1,6 +1,6 @@
 <h1>
   <img src="./img/hei-en.png" alt="HEI-Vs Logo" width="350">
-  <br> Node-RED flows
+  <br> Node-RED UI
     <h2>Flow Based Programming</h2>
   <br>
 </h1>
