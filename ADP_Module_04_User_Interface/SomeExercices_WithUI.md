@@ -15,6 +15,11 @@ Use [ctrlx01.hevs.ch](https://ctrlx01.hevs.ch) on your browser to connect to the
 - **Username**: dls-adp-student
 - **Password**: D1s#Adp#Student
 
+:bulb: To start from a local **flows.json** in a folder:
+    -   Start Node.js Command prompt.
+    -   Change the directory to the flow you want to start.
+    -   Execute node-red-
+
 ### Base flow.json
 Use the flow.json from your local git repositoy to start node-red.
     
@@ -170,6 +175,7 @@ Build this UI.
 </figure>
 </div>
 
+
 ### Tank level
 Display a "Tank Level" type gauge controlled by a slide from 0 to 100%
 
@@ -218,6 +224,15 @@ Build the UI for a signal generator like this one.
   <figcaption>Signal generator</figcaption>
 </figure>
 </div>
+
+
+:bulb: Depending of the version of the palette, it is possible that you need a function to convert the signal of GetSignal from a payload to a value.
+
+```
+var newMsg = msg;
+newMsg.payload = msg.payload.value;
+return newMsg;
+```
 
 ---
 
