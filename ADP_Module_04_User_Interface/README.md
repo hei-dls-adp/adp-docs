@@ -10,30 +10,34 @@ Author: [Cédric Lenoir](mailto:cedric.lenoir@hevs.ch)
 **Sommaire**
 - [Module 04 User Interfaces](#module-04-user-interfaces)
   - [Introduction](#introduction)
+    - [User Interface or HMI](#user-interface-or-hmi)
   - [Dashboard 2.0](#dashboard-20)
-  - [Hello Node-RED Dashboard](#hello-node-red-dashboard)
-  - [Main settings of the dashboard](#main-settings-of-the-dashboard)
-  - [Button](#button)
-  - [Text input](#text-input)
-  - [Number input](#number-input)
-  - [Text](#text)
-  - [Form](#form)
-  - [Gauge](#gauge)
-  - [Slider](#slider)
-  - [Switch](#switch)
-  - [File input](#file-input)
-  - [Button group](#button-group)
-  - [Dropdown](#dropdown)
-  - [Radio group](#radio-group)
-  - [Table](#table)
-  - [Markdown](#markdown)
-  - [Chart](#chart)
-  - [Template](#template)
-  - [Event](#event)
-  - [Notification](#notification)
-  - [UI control](#ui-control)
+    - [Hello Node-RED Dashboard](#hello-node-red-dashboard)
+    - [Main settings of the dashboard](#main-settings-of-the-dashboard)
+      - [Header Style option](#header-style-option)
+      - [Header Content option](#header-content-option)
+      - [Sidebar Style option](#sidebar-style-option)
+    - [Button](#button)
+    - [Text input](#text-input)
+    - [Number input](#number-input)
+    - [Text](#text)
+    - [Form](#form)
+    - [Gauge](#gauge)
+    - [Slider](#slider)
+    - [Switch](#switch)
+    - [File input](#file-input)
+    - [Button group](#button-group)
+    - [Dropdown](#dropdown)
+    - [Radio group](#radio-group)
+    - [Table](#table)
+    - [Markdown](#markdown)
+      - [Insert charts in your documentation.](#insert-charts-in-your-documentation)
+    - [Chart](#chart)
+    - [Template](#template)
+    - [Event](#event)
+    - [Notification](#notification)
+    - [UI control](#ui-control)
 - [Exercices with UI](#exercices-with-ui)
-- [PLC project](#plc-project)
 
 # Module 04 User Interfaces
 
@@ -706,12 +710,7 @@ In a simple form, will display the text comming thru a ``msg.payload``.
 ---
 
 # Exercices with UI
-[Some exercises for Module 04](SomeExercices_WithUI.md)
+Exercices for module 04 are on a separate repository. See [adp_lab_02_2026](https://github.com/hei-dls-adp/adp_lab_02_2026) on Github.
 
-
-## PLC project
-About [the PLC project for this module](./plc_base/PracticalWork_Module_04_UI.md).
-
-This project should already be loaded in the PLC. You need to request a login and password from your supervisor to load into the project with Node-RED.
 
 <!-- End of README.md -->
