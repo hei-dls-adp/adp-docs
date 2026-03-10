@@ -712,5 +712,4 @@ In a simple form, will display the text comming thru a ``msg.payload``.
 # Exercices with UI
 Exercices for module 04 are on a separate repository. See [adp_lab_02_2026](https://github.com/hei-dls-adp/adp_lab_02_2026) on Github.
 
-
 <!-- End of README.md -->

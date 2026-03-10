@@ -1,6 +1,6 @@
 <h1>
   <img src="./img/hei-en.png" alt="HEI-Vs Logo" width="350">
-  <br> ADP
+  <br> Automation in devopment and production
     <h2>Interfaces</h2>
   <br>
 </h1>
@@ -101,7 +101,7 @@ Finally, note that access rights to system variables are configured by writing t
 With older protocols like Modbus, each system variable was known only by its register number, making it impossible to access the system correctly without knowing the register list. With a protocol like OPC-UA, it's possible to obtain the system's directory structure without prior knowledge.
 
 ### Is a tree diagram structure the best solution?
-Not necessarily. The PackML standard proposes a data list structure. In practice, a combination of both can be used.
+Not necessarily. The PackML standard, a normalized structure for machine communication proposes a data list structure. In practice, a combination of both can be used.
 
 The advantage of parameter lists is that they are much simpler to manage in terms of display and archiving.
 
@@ -162,9 +162,9 @@ END_TYPE
 ```
 
 ### Javascript
-Ici, c'est exactement l'inverse, on sait juste que c'est un nombre, un string, un objet ou un boolean.
+Here, it's exactly the opposite; we only know whether it's a number, a string, an object, or a boolean.
 
-Les nombres sont tous codés sur 64 bits.
+The numbers are all encoded using 64 bits.
 
 ```js
 const ST_SomeValues = {
@@ -230,7 +230,7 @@ This overview is intended to make you aware of one thing: you cannot transfer ju
 
 At best, there may be data loss; at worst, the machine receiving the incorrect information will crash.
 
-### Machine interface
+### Protocole
 There exist an industrial standard with name OPC-UA. There exist many palette modules for OPC-UA, but as the palette for CtrlX Code propose more or less the same functionalities and is more easy to use, we will use [node-red-contrib-ctrlx-automation](https://flows.nodered.org/node/node-red-contrib-ctrlx-automation) palette as illustation of this kind of interface.
 
 <figure>
@@ -247,7 +247,7 @@ In the first part of this module, we discussed the user interface (UI) between N
 
 It would be too lengthy to discuss all the types of interfaces available for Node-RED in detail here. We will briefly describe the main ones, and then go into more detail about the one we use in the [HEVS](https://www.hevs.ch) automation lab.
 
-## Interface Problems.
+## Interface jungle.
 Almost every manufacturer has developed its own standard. Even though OPC UA (Open Platform Communications Unified Architecture) exists, this standard is often an additional layer grafted onto the IACS vendor's proprietary protocol, with several consequences:
 - Access is slower.
 - Available services vary from one platform to another.
@@ -284,6 +284,8 @@ Node-RED nodes exist for the vast majority of IACS systems on the market.
 #### The upside.
 
 Even though the nodes are different, the operating principle is relatively similar for each vendor. So if you know how to use CtrlX nodes, you won't be lost if you need to switch to another platform, especially OPC-UA, Beckhoff, or Siemens.
+
+---
 
 ## Client-Server Architecture
 The machine acts as a server, offering various services to the client.
@@ -331,6 +333,8 @@ Three main interaction types:
 
 #### Structure
 Supports direct operation on data structures/objects beyond simple value operations.
+
+---
 
 ## Machine Interface in Practice
 Regardless of the type of interface with a machine, the principle is often the same.
@@ -388,8 +392,8 @@ sequenceDiagram
 
 ```
 
-### Cas concrets
-Commen déjà mentionné ci-dessus, nous allons utiliser le protocole DataLayer CtrlX Core pour illustrer ce cours. Au niveau de l'utilisation il est très proche de OPC-UA, mais, alors que la plupart des palettes Open Source en OPC-UA ne permettent pas de parcourir l'espace d'adresse, la version DataLayer de Bosch Rexroth le permet, ce qui simplifie passablement son utilisation.
+### Practical Examples
+As mentioned above, we will use the DataLayer CtrlX Core protocol to illustrate this course. In terms of usage, it is very similar to OPC-UA, but while most open-source palettes in OPC-UA do not allow address space traversal, Bosch Rexroth's DataLayer version does, which considerably simplifies its use.
 
 <figure>
     <img src="./img/NodeRed_DataLayer.png"
