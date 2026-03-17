@@ -94,7 +94,10 @@ This lab presents **practical examples** designed to demonstrate, on a small dem
 ## Lab 02, Node-RED [Dashboard Hands-on](https://github.com/hei-dls-adp/adp_lab_02_2026)
 *Practical application of module 04,*
 
-## Lab 03, Connect to the robot.
+## Lab 03, [Connect to the robot](https://github.com/hei-dls-adp/adp_lab_03_2026).
 *Practical application of module 05,*
+
+## [Lab report template](./Lab_Report_Template/README.md)
+Use it for your report.
 
 <!-- End of file -->
