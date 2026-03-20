@@ -737,6 +737,25 @@ classDiagram
     }
 ```
 
+--- 
 
+# Summary
+1.  In the lab we will connect Node-RED, the **client** to the PLC, the **server**.
+1.  We use services of the package [node-red-contrib-ctrlx-automation](https://flows.nodered.org/node/node-red-contrib-ctrlx-automation).
+2.  We use **Data Layer Subscribe** to read variables when they change value, **PLC events**.
+3.  We use **Data Layer Request** to:
+    1.  Read data on Node-RED events, **READ**.
+    2.  Write data on Node-RED events. **WRITE**.
+    3.  Invoque methods using **READ with ARGs**.
+4. For Subscribe or Request we need a **connection** to the server and a **path** to the objects.
+
+<figure>
+    <img src="./img/NodeRed_DataLayer.png"
+         alt="Image lost: NodeRed_DataLayer"
+         width="100">
+  <figcaption>ctrlX Automation Request and Subscribe</figcaption>
+</figure>
+
+:warning: Depending on the object, we need a function to format the object's data. 
 
 <!-- End of README.md -->
