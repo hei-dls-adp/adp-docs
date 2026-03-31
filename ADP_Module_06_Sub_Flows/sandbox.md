@@ -1,21 +1,27 @@
-<h1>
-  <img src="./img/hei-en.png" alt="HEI-Vs Logo" width="350">
-  <br> Automation in development and production
-    <h2>Interfaces</h2>
-  <br>
-</h1>
-
-Author: [Cédric Lenoir](mailto:cedric.lenoir@hevs.ch)
-
-<b style='color:red;'>Draft</b>
-
-# Module 06 Node-RED Sub-flows
-1.  Functions
-2.  [Variables](#node-red-variables)
-3.  Subflows
 
 
----
+About functions
+
+
+
+How to write a function
+
+
+Example extract a message from an array.
+
+
+About variables
+
+
+How to use static variables.
+
+
+About subflows
+
+
+How to use a subflow.
+
+Try it.
 
 ## Node-RED Variables
 
@@ -262,26 +268,3 @@ You will need to refresh the variables to display them.
 :bulb: you can delete the variables in  the navigation panel using the trash icon.
 
 ---
-
-Note: Node-RED variables are not persistent by default.
-
-1. There is a paid option in FlowFuse that would enable this, but in this course, we want to stick to the purely open-source approach.
-
-2.  A second option would be to use Docker. Since the lab machines are not yet equipped with Docker, this option is not documented.
-
-3.  A third option involves using a database or a file. We will cover some of these options later in the course.
-
----
-
-## Plan
-
-1. Introduction to Sub-flows
-2. Creating Sub-flows
-3. Sub-flow Configuration
-4. Input/Output Nodes
-5. Reusing Sub-flows
-6. Best Practices
-
-## Résumé
-
-This module covers Node-RED sub-flows, which allow you to encapsulate groups of nodes into reusable components. Learn how to create, configure, and deploy sub-flows to build modular and maintainable automation workflows in development and production environments.
