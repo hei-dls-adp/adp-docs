@@ -1,0 +1,850 @@
+[
+    {
+        "id": "cb092a0f4889e14e",
+        "type": "subflow",
+        "name": "Get flow name",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 60,
+                "y": 120,
+                "wires": [
+                    {
+                        "id": "aea48f84a34df3dc"
+                    }
+                ]
+            }
+        ],
+        "out": [],
+        "env": [],
+        "meta": {
+            "version": "0.0.1",
+            "author": "cedric.lenoir@hevs.ch",
+            "desc": "For exercise",
+            "license": "MIT"
+        },
+        "color": "#3FADB5"
+    },
+    {
+        "id": "5d31db0415ed10bd",
+        "type": "debug",
+        "z": "cb092a0f4889e14e",
+        "g": "d5d54f69ddb2a6ba",
+        "name": "Flow name",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 510,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "0a91ac4995cc7560",
+        "type": "comment",
+        "z": "cb092a0f4889e14e",
+        "g": "d5d54f69ddb2a6ba",
+        "name": "Get flow name",
+        "info": "",
+        "x": 210,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "aea48f84a34df3dc",
+        "type": "function",
+        "z": "cb092a0f4889e14e",
+        "g": "d5d54f69ddb2a6ba",
+        "name": "Get flow name",
+        "func": "var newMsg = {}\n\nnewMsg.payload = env.get(\"NR_FLOW_NAME\");\n\nreturn newMsg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 120,
+        "wires": [
+            [
+                "5d31db0415ed10bd"
+            ]
+        ]
+    },
+    {
+        "id": "d5d54f69ddb2a6ba",
+        "type": "group",
+        "z": "cb092a0f4889e14e",
+        "name": "",
+        "style": {
+            "stroke": "#addb7b",
+            "label": true,
+            "color": "#7fb7df"
+        },
+        "nodes": [
+            "5d31db0415ed10bd",
+            "0a91ac4995cc7560",
+            "aea48f84a34df3dc"
+        ],
+        "x": 114,
+        "y": 79,
+        "w": 512,
+        "h": 202,
+        "info": "This is a simple subflow for an exercise."
+    },
+    {
+        "id": "a86e619e6db0df65",
+        "type": "tab",
+        "label": "Subflows",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "17ec622fb15c88aa",
+        "type": "group",
+        "z": "a86e619e6db0df65",
+        "style": {
+            "stroke": "#999999",
+            "stroke-opacity": "1",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "label-position": "nw",
+            "color": "#a4a4a4"
+        },
+        "nodes": [
+            "9271e5df461802fe",
+            "af1060c374407e40",
+            "5f7d96408e962ba0",
+            "d311a4ed4ff8fbab"
+        ],
+        "x": 14,
+        "y": 539,
+        "w": 652,
+        "h": 142
+    },
+    {
+        "id": "60591abc37ca6335",
+        "type": "group",
+        "z": "a86e619e6db0df65",
+        "name": "My first function",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "ed7eace2a3bee186",
+            "3ac7aaa9bf027599",
+            "5ed53daec5dea50b",
+            "61e41e7df1afd725"
+        ],
+        "x": 34,
+        "y": 779,
+        "w": 752,
+        "h": 142
+    },
+    {
+        "id": "ef8b8fa94ce4d950",
+        "type": "group",
+        "z": "a86e619e6db0df65",
+        "name": "Function with two outputs",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "8870e563e9608630",
+            "f1c053c063266c3f",
+            "3509d89d826ada45",
+            "a9d2c41ee91a8d18",
+            "19ca4248eec2510b"
+        ],
+        "x": 34,
+        "y": 959,
+        "w": 712,
+        "h": 182
+    },
+    {
+        "id": "bdf8b989cbfd085c",
+        "type": "inject",
+        "z": "a86e619e6db0df65",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"ID\":1001,\"Name\":\"Axes Velocity\",\"Unit\":\"m/s\",\"Value\":0.1}",
+        "payloadType": "json",
+        "x": 110,
+        "y": 160,
+        "wires": [
+            [
+                "72843e43cb19ef3e",
+                "e7be51d5750cda6b",
+                "b61cd8d96390cb86",
+                "8e7ac0e53d04a7e7",
+                "30007e212eab8560"
+            ]
+        ]
+    },
+    {
+        "id": "72843e43cb19ef3e",
+        "type": "debug",
+        "z": "a86e619e6db0df65",
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 320,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "e7be51d5750cda6b",
+        "type": "ui-table",
+        "z": "a86e619e6db0df65",
+        "group": "192a58a99a60a88e",
+        "name": "",
+        "label": "",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "maxrows": 0,
+        "passthru": false,
+        "autocols": true,
+        "showSearch": true,
+        "deselect": true,
+        "selectionType": "none",
+        "columns": [],
+        "mobileBreakpoint": "sm",
+        "mobileBreakpointType": "defaults",
+        "action": "append",
+        "className": "",
+        "x": 330,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b61cd8d96390cb86",
+        "type": "change",
+        "z": "a86e619e6db0df65",
+        "name": "Flow variable",
+        "rules": [
+            {
+                "t": "set",
+                "p": "MyFlowObject",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 350,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "302902dc850f3e13",
+        "type": "debug",
+        "z": "a86e619e6db0df65",
+        "name": "Get Global Variable",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 610,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "8e7ac0e53d04a7e7",
+        "type": "function",
+        "z": "a86e619e6db0df65",
+        "name": "MyFlowFunctionObject",
+        "func": "flow.set('MyFlowFunctionObject', msg.payload);\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "785ebc247464c1e6",
+        "type": "change",
+        "z": "a86e619e6db0df65",
+        "name": "Delete flow variable object",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "MyFlowObject",
+                "pt": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 330,
+        "y": 420,
+        "wires": [
+            [
+                "302902dc850f3e13"
+            ]
+        ]
+    },
+    {
+        "id": "ed5968f2742360cc",
+        "type": "change",
+        "z": "a86e619e6db0df65",
+        "name": "Flow variable",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "MyFlowObject",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 290,
+        "y": 320,
+        "wires": [
+            [
+                "d4395889be109249"
+            ]
+        ]
+    },
+    {
+        "id": "8f91a94fb1607524",
+        "type": "inject",
+        "z": "a86e619e6db0df65",
+        "name": "Get Global",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 120,
+        "y": 320,
+        "wires": [
+            [
+                "ed5968f2742360cc"
+            ]
+        ]
+    },
+    {
+        "id": "b06c5ee31021b196",
+        "type": "inject",
+        "z": "a86e619e6db0df65",
+        "name": "Delete Global",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 110,
+        "y": 420,
+        "wires": [
+            [
+                "785ebc247464c1e6"
+            ]
+        ]
+    },
+    {
+        "id": "d4395889be109249",
+        "type": "debug",
+        "z": "a86e619e6db0df65",
+        "name": "debug 10",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 520,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "30007e212eab8560",
+        "type": "change",
+        "z": "a86e619e6db0df65",
+        "name": "Global variable",
+        "rules": [
+            {
+                "t": "set",
+                "p": "MyGlobalObject",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 360,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9271e5df461802fe",
+        "type": "inject",
+        "z": "a86e619e6db0df65",
+        "g": "17ec622fb15c88aa",
+        "name": "Increment counter",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 580,
+        "wires": [
+            [
+                "af1060c374407e40"
+            ]
+        ]
+    },
+    {
+        "id": "af1060c374407e40",
+        "type": "function",
+        "z": "a86e619e6db0df65",
+        "g": "17ec622fb15c88aa",
+        "name": "Inc. counter",
+        "func": "var _counter = context.get('counter');\n_counter++;\ncontext.set('counter', _counter);\n\nmsg.payload = _counter\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "// Code added here will be run once\n// whenever the node is started.\ncontext.set('counter', 0);\n",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 580,
+        "wires": [
+            [
+                "5f7d96408e962ba0"
+            ]
+        ]
+    },
+    {
+        "id": "5f7d96408e962ba0",
+        "type": "debug",
+        "z": "a86e619e6db0df65",
+        "g": "17ec622fb15c88aa",
+        "name": "Counter",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 560,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "d311a4ed4ff8fbab",
+        "type": "comment",
+        "z": "a86e619e6db0df65",
+        "g": "17ec622fb15c88aa",
+        "name": "Build a counter",
+        "info": "",
+        "x": 120,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "db1d81db7d1840bd",
+        "type": "subflow:cb092a0f4889e14e",
+        "z": "a86e619e6db0df65",
+        "name": "",
+        "x": 370,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "3e05e6dd1ff2690b",
+        "type": "inject",
+        "z": "a86e619e6db0df65",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 740,
+        "wires": [
+            [
+                "db1d81db7d1840bd"
+            ]
+        ]
+    },
+    {
+        "id": "ed7eace2a3bee186",
+        "type": "function",
+        "z": "a86e619e6db0df65",
+        "g": "60591abc37ca6335",
+        "name": "The most simple function",
+        "func": "var msgLength = {};\n\nmsgLength.payload = msg.payload.length;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 820,
+        "wires": [
+            [
+                "5ed53daec5dea50b"
+            ]
+        ]
+    },
+    {
+        "id": "3ac7aaa9bf027599",
+        "type": "inject",
+        "z": "a86e619e6db0df65",
+        "g": "60591abc37ca6335",
+        "name": "Inject text",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "My first function",
+        "payloadType": "str",
+        "x": 140,
+        "y": 820,
+        "wires": [
+            [
+                "ed7eace2a3bee186"
+            ]
+        ]
+    },
+    {
+        "id": "5ed53daec5dea50b",
+        "type": "debug",
+        "z": "a86e619e6db0df65",
+        "g": "60591abc37ca6335",
+        "name": "debug 11",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 680,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "61e41e7df1afd725",
+        "type": "comment",
+        "z": "a86e619e6db0df65",
+        "g": "60591abc37ca6335",
+        "name": "My first function",
+        "info": "",
+        "x": 140,
+        "y": 880,
+        "wires": []
+    },
+    {
+        "id": "8870e563e9608630",
+        "type": "inject",
+        "z": "a86e619e6db0df65",
+        "g": "ef8b8fa94ce4d950",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "Sensor One",
+        "payloadType": "str",
+        "x": 150,
+        "y": 1020,
+        "wires": [
+            [
+                "3509d89d826ada45"
+            ]
+        ]
+    },
+    {
+        "id": "f1c053c063266c3f",
+        "type": "debug",
+        "z": "a86e619e6db0df65",
+        "g": "ef8b8fa94ce4d950",
+        "name": "Link to output one",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 610,
+        "y": 1000,
+        "wires": []
+    },
+    {
+        "id": "3509d89d826ada45",
+        "type": "function",
+        "z": "a86e619e6db0df65",
+        "g": "ef8b8fa94ce4d950",
+        "name": "Sensor One",
+        "func": "if (msg.payload === \"Sensor One\") {\n    return [msg, null];\n} else {\n    node.warn(\"This is another sensor\");\n    return [null, msg];\n}\n",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 1040,
+        "wires": [
+            [
+                "f1c053c063266c3f"
+            ],
+            [
+                "a9d2c41ee91a8d18"
+            ]
+        ]
+    },
+    {
+        "id": "a9d2c41ee91a8d18",
+        "type": "debug",
+        "z": "a86e619e6db0df65",
+        "g": "ef8b8fa94ce4d950",
+        "name": "Link to output two",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 610,
+        "y": 1100,
+        "wires": []
+    },
+    {
+        "id": "19ca4248eec2510b",
+        "type": "inject",
+        "z": "a86e619e6db0df65",
+        "g": "ef8b8fa94ce4d950",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "Other sensor",
+        "payloadType": "str",
+        "x": 150,
+        "y": 1080,
+        "wires": [
+            [
+                "3509d89d826ada45"
+            ]
+        ]
+    },
+    {
+        "id": "192a58a99a60a88e",
+        "type": "ui-group",
+        "name": "Message",
+        "page": "89038201d97b77d2",
+        "width": 6,
+        "height": 1,
+        "order": 1,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "89038201d97b77d2",
+        "type": "ui-page",
+        "name": "Subflow",
+        "ui": "926d3079c9560d19",
+        "path": "/page6",
+        "icon": "home",
+        "layout": "grid",
+        "theme": "8966a7b403a8fb88",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": "0",
+                "cols": "3"
+            },
+            {
+                "name": "Tablet",
+                "px": "576",
+                "cols": "6"
+            },
+            {
+                "name": "Small Desktop",
+                "px": "768",
+                "cols": "9"
+            },
+            {
+                "name": "Desktop",
+                "px": "1024",
+                "cols": "12"
+            }
+        ],
+        "order": 1,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "926d3079c9560d19",
+        "type": "ui-base",
+        "name": "Home",
+        "path": "/dashboard",
+        "appIcon": "factory",
+        "includeClientData": true,
+        "acceptsClientConfig": [
+            "ui-notification",
+            "ui-control"
+        ],
+        "showPathInSidebar": false,
+        "navigationStyle": "fixed",
+        "titleBarStyle": "default",
+        "showReconnectNotification": true,
+        "notificationDisplayTime": "1",
+        "showDisconnectNotification": true
+    },
+    {
+        "id": "8966a7b403a8fb88",
+        "type": "ui-theme",
+        "name": "Default Theme",
+        "colors": {
+            "surface": "#ffffff",
+            "primary": "#0094ce",
+            "bgPage": "#8080ff",
+            "groupBg": "#ffffff",
+            "groupOutline": "#cccccc"
+        },
+        "sizes": {
+            "density": "default",
+            "pagePadding": "12px",
+            "groupGap": "12px",
+            "groupBorderRadius": "4px",
+            "widgetGap": "12px"
+        }
+    }
+]
