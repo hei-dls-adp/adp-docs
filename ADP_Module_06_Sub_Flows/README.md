@@ -1,19 +1,231 @@
 <h1>
   <img src="./img/hei-en.png" alt="HEI-Vs Logo" width="350">
   <br> Automation in development and production
-    <h2>Interfaces</h2>
+    <h2>Subflows</h2>
   <br>
 </h1>
 
 Author: [Cédric Lenoir](mailto:cedric.lenoir@hevs.ch)
 
-<b style='color:red;'>Draft</b>
 
-# Module 06 Node-RED Sub-flows
-1.  Functions
+# Module 06 Node-RED Subflows
+1.  [Functions](#writing-functions)
 2.  [Variables](#node-red-variables)
-3.  Subflows
+3.  [Subflows](#subflow-a-short-introduction)
 
+
+---
+
+## Writing Functions
+
+The Function node allows JavaScript code to be run against the messages that are passed through it.
+
+The message is passed in as an object called msg. By convention it will have a ``msg.payload`` property containing the body of the message.
+
+Other nodes may attach their own properties to the message, and they should be described in their documentation.
+
+
+### Writing a Function
+
+The code entered into the Function node represents the body of the function. The most simple function simply returns the message exactly as-is:
+
+```js
+// Code of the function in On Message
+// implicitely return msg with payload "The most simple function"
+return msg;
+```
+
+Example
+1.  Drag a function node.
+2.  Set name of the function **The most simple function**.
+3.  Insert an inject node with message
+4.  Add a debug node
+
+<div align="center">
+<figure>
+  <img src="./img/MyFirstFunction.png"
+     alt=" image lost : MyFirstFunction"
+     width="600">
+  <figcaption>The most simple function.</figcaption>
+</figure>
+</div>
+
+
+<div align="center">
+<figure>
+  <img src="./img/InjectMyFirstFunction.png"
+     alt=" image lost : InjectMyFirstFunction"
+     width="500">
+  <figcaption>Inject node "My first function".</figcaption>
+</figure>
+</div>
+
+If the function returns null, then no message is passed on and the flow ends.
+
+**The function must always return a msg object**. Returning a number or string will result in an error.
+
+The returned message object does not need to be same object as was passed in; the function can construct a completely new object before returning it. For example:
+
+```js
+var newMsg = { payload: msg.payload.length };
+return newMsg;
+```
+
+:bulb: Constructing a new message object will lose any message properties of the received message. In general, function nodes should return the message object they were passed having made any changes to its properties.
+
+Use node.warn() to show warnings in the sidebar to help you debug. For example:
+
+```js
+node.warn("my var xyz = " + xyz);
+```
+
+See logging section below for more details.
+
+### Multiple Outputs
+
+The function edit dialog allows the number of outputs to be changed. If there is more than one output, an array of messages can be returned by the function to send to the outputs.
+
+This makes it easy to write a function that sends the message to different outputs depending on some condition. For example, this function would send anything a message with payload ``"Sensor One"`` on output one, and anything else on output two.
+
+```js
+if (msg.payload === "Sensor One") {
+    return [msg, null];
+} else {
+    node.warn("This is another sensor");
+    return [null, msg];
+}
+```
+
+:warning: Furthermore, a warning is added in the sidebar for debug.
+
+<div align="center">
+<figure>
+  <img src="./img/FunctionWithTwoOutputs.png"
+     alt=" image lost : FunctionWithTwoOutputs"
+     width="500">
+  <figcaption>Function with two outputs".</figcaption>
+</figure>
+</div>
+
+<div align="center">
+<figure>
+  <img src="./img/SelectNumberOfOutputsInSetup.png"
+     alt=" image lost : SelectNumberOfOutputsInSetup"
+     width="500">
+  <figcaption>Select number of outputs in Setup".</figcaption>
+</figure>
+</div>
+
+:warning: zero or more outputs, but only one input.
+
+The following example passes the original message as-is on the first output and a message containing the payload length is passed to the second output:
+
+```js
+var newMsg = { payload: msg.payload.length };
+return [msg, newMsg];
+```
+
+#### Handling arbitrary number of outputs
+:no_bell: *for information only*
+
+node.outputCount contains the number of outputs configured for the function node.
+
+This makes it possible to write generic functions that can handle variable number of outputs set from the edit dialog.
+
+For example if you wish to spread incoming messages randomly between outputs, you could:
+
+```js
+// Create an array same length as there are outputs
+const messages = new Array(node.outputCount)
+// Choose random output number to send the message to
+const chosenOutputIndex = Math.floor(Math.random() * node.outputCount);
+// Send the message only to chosen output
+messages[chosenOutputIndex] = msg;
+// Return the array containing chosen output
+return messages;
+```
+
+You can now configure number of outputs solely via edit dialog without making changes to the function itself.
+
+#### Multiple Messages
+:no_bell: *for information only*
+
+A function can return multiple messages on an output by returning an array of messages within the returned array. When multiple messages are returned for an output, subsequent nodes will receive the messages one at a time in the order they were returned.
+
+In the following example, msg1, msg2, msg3 will be sent to the first output. msg4 will be sent to the second output.
+
+```js
+var msg1 = { payload:"first out of output 1" };
+var msg2 = { payload:"second out of output 1" };
+var msg3 = { payload:"third out of output 1" };
+var msg4 = { payload:"only message from output 2" };
+return [ [ msg1, msg2, msg3 ], msg4 ];
+```
+
+The following example splits the received payload into individual words and returns a message for each of the words.
+
+```js
+var outputMsgs = [];
+var words = msg.payload.split(" ");
+for (var w in words) {
+    outputMsgs.push({payload:words[w]});
+}
+return [ outputMsgs ];
+```
+
+#### Running code on start
+
+The Function node provides an On Start tab where you can provide code that will run whenever the node is started. This can be used to setup any state the Function node requires.
+
+For example, it can initialise values in local context that the main Function will use:
+
+```js
+if (context.get("counter") === undefined) {
+    context.set("counter", 0)
+}
+```
+
+The **On Start** function can return a Promise if it needs to complete asynchronous work before the main Function can start processing messages.
+
+#### Logging events
+
+If a node needs to log something to the console, it can use one of the follow functions:
+
+-   ``node.log("Something happened");``
+-   ``node.warn("Something happened you should know about");``
+-   ``node.error("Oh no, something bad happened");``
+
+#### Function reference API
+:no_bell: *for information only*
+
+The documentation above is what you need for basic applications. For more details you can have a look on the [Node-RED user guide for functions](https://nodered.org/docs/user-guide/writing-functions#writing-a-function).
+
+-   ``node.id`` : the id of the Function node.
+-   ``node.name`` : the name of the Function node.
+-   ``node.outputCount`` : number of outputs set for Function node
+-   ``node.log(..)`` : log a message
+-   ``node.warn(..)`` : log a warning message
+-   ``node.error(..)`` : log an error message
+-   ``node.debug(..)`` : log a debug message
+-   ``node.trace(..)`` : log a trace message
+-   ``node.status(..)`` : update the node status
+-   ``node.send(..)`` : send a message
+-   ``node.done(..)`` : finish with a message
+
+##### context
+
+-   ``context.get(..)`` : get a node-scoped context property
+-   ``context.set(..)`` : set a node-scoped context property
+
+##### flow
+
+-   ``flow.get(..)`` : get a flow-scoped context property
+-   ``flow.set(..)`` : set a flow-scoped context property
+
+##### global
+
+-   ``global.get(..)`` : get a global-scoped context property
+-   ``global.set(..)`` : set a global-scoped context property
 
 ---
 
@@ -263,6 +475,80 @@ You will need to refresh the variables to display them.
 
 ---
 
+#### Environment Variables in Node-RED
+Predefined data to be used in your Node-RED instance
+
+Programs, written with Node-RED or otherwise, need to sometimes retrieve information that wasn’t decided on during the creation of the program.
+
+Contextual data like configuration, which user is executing the code, differentiate based on what device is executing a flow, or sometimes secrets which shouldn’t be exposed in the code. This is usually done through environment variables. These are pairs of strings, a key with an attached value, which are accessed by their key. Say you want to access an API endpoint with a key, you’d save the key as API_KEY with the value set to yoursupersecretkey. FlowFuse allows setting environment variables. Let’s start using them to understand how they work.
+
+One of the options for the inject node is to inject a env variable, short for; you guessed it: Environment Variable. **In this case** we’re going to one that’s **pre-defined** by Node-RED: **NR_FLOW_NAME**. The name of each variable is in all caps by convention. When connecting this inject to a debug it prints “Subflows” for me, or the name of the flow.
+
+Example, get ``NR_FLOW_NAME``.
+
+
+<div align="center">
+<figure>
+  <img src="./img/GetFlowName.png"
+     alt=" image lost : GetFlowName"
+     width="500">
+  <figcaption>Get flow name.</figcaption>
+</figure>
+</div>
+
+<div align="center">
+<figure>
+  <img src="./img/SetPayloadToFlowName.png"
+     alt=" image lost : SetPayloadToFlowName"
+     width="500">
+  <figcaption>Set NR_FLOW_NAME to payload.</figcaption>
+</figure>
+</div>
+
+Using javascript in a function
+
+```js
+var newMsg = {}
+
+newMsg.payload = env.get("NR_FLOW_NAME");
+
+return newMsg;
+```
+
+Leveraging environment variables can also be done with other nodes, like for example **change**, **switch**. Note however; you can set the **inject** node to output the value even when it doesn’t exist, but it doesn’t allow you to check in the switch node for example if it exists.
+
+Node-RED allows you to set environment variables, **but not to change them when executing flows**. Node-RED doesn’t support Environment Variables like other programming environments do. When the flow is deployed the environment variables are replaced with the known values at that time. This is the biggest gotcha for most developers.
+
+:bulb: For example, the flow name stored in **NR_FLOW_NAME** is a classic Node-RED environment variable. This name is defined during program creation and deployment, and then cannot be changed anymore.
+
+---
+
+#### Built-In Environment Variables
+
+Node-RED defines a set of environment variables for exposing information about the nodes, flows and groups.
+
+This information helps **locate** the node in your workspace. Nodes in your workspace exist as part of a flow. Likewise, a node may, or may not, be part of a group. Nodes, flows and groups are each given unique IDs that are generated by Node-RED. [See below for group](#the-group) if you do not know what it means in Node-RED context.
+
+Nodes, flows and groups all support the name property, which you can change when editing properties.
+
+The following environment variables can be used to access this information for a given node:
+
+- **NR_NODE_ID** - the ID of the node
+- **NR_NODE_NAME** - the Name of the node
+- **NR_NODE_PATH** - the Path of the node. This represents a node’s position in a flow. It is / delimited IDs of the flow, enclosing subflows, and the node.
+- **NR_GROUP_ID** - the ID of the containing group
+- **NR_GROUP_NAME** - the Name of the containing group
+- **NR_FLOW_ID** - the ID of the flow the node is on
+- **NR_FLOW_NAME** - the Name of the flow the node is on
+- **NR_SUBFLOW_NAME** - the Name of the containing subflow instance node (since Node-RED 3.1)
+- **NR_SUBFLOW_ID** - the ID of the containing subflow instance node (since Node-RED 3.1)
+- **NR_SUBFLOW_PATH** - the Path of the containing subflow instance node (since Node-RED 3.1)
+
+Note that while the IDs generated by Node-RED are guaranteed to be unique, the names are not. If a node, flow or group does not have a given name, the corresponding environment variable will be an empty string. If a node is not part of a group, its group id environment variable will also return an empty string.
+
+---
+
+
 Note: Node-RED variables are not persistent by default.
 
 1. There is a paid option in FlowFuse that would enable this, but in this course, we want to stick to the purely open-source approach.
@@ -273,15 +559,60 @@ Note: Node-RED variables are not persistent by default.
 
 ---
 
-## Plan
+## Subflow a short introduction
 
-1. Introduction to Sub-flows
-2. Creating Sub-flows
-3. Sub-flow Configuration
+### Table of content
+
+1. Introduction to Subflows
+2. Creating Subflows
+3. Subflow Configuration
 4. Input/Output Nodes
-5. Reusing Sub-flows
+5. Reusing Subflows
 6. Best Practices
 
-## Résumé
+### Summary
 
 This module covers Node-RED sub-flows, which allow you to encapsulate groups of nodes into reusable components. Learn how to create, configure, and deploy sub-flows to build modular and maintainable automation workflows in development and production environments.
+
+### My first subflow
+To take one of the examples above, suppose we want to have a ready-to-use node that, upon injection of a timestamp, returns the name of the flow in a debug window.
+
+#### The group
+A simple first solution would be to create a group. Simply select the nodes you're interested in, then right-click, choose Group, and **Group Selection**.
+
+Next, add a comment node to this group. You can then easily copy and paste this group into all the flows where you need this functionality. It's simple, fast, and improves code readability.
+
+
+<div align="center">
+<figure>
+  <img src="./img/GetFlowNameGroup.png"
+     alt=" image lost : GetFlowNameGroup"
+     width="500">
+  <figcaption>Get flow name group.</figcaption>
+</figure>
+</div>
+
+#### The subflow
+
+Il existe une possibilité plus compacte qui permet de créer directement un noeud qui exécute cette fonctionnalité pour ensuite être disponible comme n'importe quel noeud dans une palette.
+
+<div align="center">
+<figure>
+  <img src="./img/NodeGetFlowName.png"
+     alt=" image lost : NodeGetFlowName"
+     width="200">
+  <figcaption>Node Get flow name.</figcaption>
+</figure>
+</div>
+
+Ce noeud peut ensuite être utilisé dans n'importe quel flux, il suffira de lui adjoindre un noeud inject pour obtenir le nom du flow dans le volet de navigation debug.
+
+Il ne s'agit pas ici de montrer une fonction très utile, à savoir NR_FLOW_NAME, mais bien de comprendre comment créer un subflow simple.
+
+---
+
+## Some exercises
+
+[Link to exercises for module 06](SomeExercises.md), from functions to subflows.
+
+<!-- End of document -->
