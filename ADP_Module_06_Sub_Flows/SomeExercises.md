@@ -129,7 +129,7 @@ If you cannot connect the subflow to a PLC, at home, you can simulate input valu
 <figure>
   <img src="./img/Subflows.png"
      alt=" image lost : Subflows"
-     width="300">
+     width="200">
   <figcaption>Subflows in the upper left corner of the editor.</figcaption>
 </figure>
 </div>
@@ -160,6 +160,6 @@ If subflows are not very usefull for very small projects, It is a very powerful 
 -   The project is more easy to maintain, only one object to modfiy if needed.
 -   More easy to read.
 
-These are the words of a student who completed his bachelor's thesis with Node-RED: <b style='color:red;'>I would never have been able to finish on time without using subflows.</b> Final result: the OIKEN prize.
+These are the words of a student who completed his bachelor's thesis with Node-RED: <b style='color:red;'>I would never have been able to finish on time without using subflows.
 
 <!-- End of document -->
