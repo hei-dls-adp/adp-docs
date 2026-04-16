@@ -50,10 +50,10 @@ Module 04 covers Node-RED Dashboard 2.0, a professional UI solution for building
 
 This module covers machine interfaces and industrial communication protocols, focusing on how Node-RED connects to automation systems, **IACS**, through OPC-UA and DataLayer protocols. It explains data structure differences across programming languages: **IEC 61131-3, JavaScript, Python, JSON** and demonstrates practical operations: reading, writing, and subscribing to variables, as well as invoking PLC methods. The emphasis is on understanding secure client-server communication, data type mapping, and real-world implementation using the ctrlX Automation palette for reliable industrial automation integration.
 
-## Module 06, [Node-RED Sub-flows](./ADP_Module_06_Sub_Flows/README.md)
+## Module 06, [Node-RED Subflows](./ADP_Module_06_Sub_Flows/README.md)
 
 **2h**
-A way for Node-RED modularisation..
+This module presents Node-RED fundamentals for  writing functions to process messages, managing variables across different scopes, **global**, **flow**, node, and environment, and creating reusable **subflows** to encapsulate and organize automation logic for production environments.
 
 ## Module 07, File Management
 
