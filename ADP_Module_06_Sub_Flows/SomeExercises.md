@@ -9,7 +9,7 @@ Author: [Cédric Lenoir](mailto:cedric.lenoir@hevs.ch)
 
 # Some exercises for Module 06
 
-## Exerice one
+## Exersice one
 
 In this exercise you will build a subflow with a function to customize the display of an input value, for example from the PLC. At home, you can simulate the input value with an ``Inject`` node. 
 
@@ -25,7 +25,7 @@ In this exercise you will build a subflow with a function to customize the displ
 </div>
 
 ### Create the subflow
--   At the upper right corner of the node-red editor, select **Subflows**, the Create Subflow.
+-   In the upper right corner of the node-red editor, select **Subflows**, the Create Subflow.
 -   In the subflow, insert a function, a text node an input and one output.
 
 <div align="center">
@@ -85,8 +85,8 @@ Finally, you will write your sensor name when inserting the subflow in your node
 
 ### Dynamic properties of a widget
 
-To edit the dynamic properties of a widdget, here : a ``text node``.
--   Select the *book icon* a the left bottom of the edit icon. See image below.
+To edit the dynamic properties of a widget, here: a ``text node``.
+-   Select the *book icon* at the left bottom of the edit icon. See image below.
 -   To modify the font, you have to select *Apply style*.
 
 <div align="center">
@@ -143,7 +143,7 @@ If you cannot connect the subflow to a PLC, at home, you can simulate input valu
 </figure>
 </div>
 
-Vous pouvez maintenant configurer votre sous-flux et l'instancier autant de fois que vous le souhaitez.
+You can now configure your subflow and instantiate it as many times as you like.
 
 <div align="center">
 <figure>
@@ -155,10 +155,10 @@ Vous pouvez maintenant configurer votre sous-flux et l'instancier autant de fois
 </div>
 
 ### To remember
-If subflows are not very usefull for very small projects, It is a very powerful tool as soon as you have to do many times the same things and your project starts to grow.
+If subflows are not very useful for very small projects, It is a very powerful tool as soon as you have to do many times the same things and your project starts to grow.
 -   Your code will be more robust, once the subflow is tested, every new instance has not to be tested in details.
--   The project is more easy to maintain, only one object to modfiy if needed.
--   More easy to read.
+-   The project is easier to maintain, only one object to modify if needed.
+-   Easier to read.
 
 These are the words of a student who completed his bachelor's thesis with Node-RED: <b style='color:red;'>I would never have been able to finish on time without using subflows.
 
