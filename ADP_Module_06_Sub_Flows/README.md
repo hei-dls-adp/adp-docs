@@ -605,7 +605,7 @@ There is a more compact option that allows you to create a node directly that pe
 </figure>
 </div>
 
-This node can then be used in any flow Simply add an inject node to it to display the flow’s name in the debug navigation pane.
+This node can then be used in any flow. Simply add an inject node to it to display the flow’s name in the debug navigation pane.
 
 The aim here is not to demonstrate a very useful function, namely NR_FLOW_NAME, but rather to understand how to create a simple subflow.
 
