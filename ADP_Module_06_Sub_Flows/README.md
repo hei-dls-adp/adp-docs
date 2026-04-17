@@ -20,7 +20,7 @@ Author: [Cédric Lenoir](mailto:cedric.lenoir@hevs.ch)
 
 The Function node allows JavaScript code to be run against the messages that are passed through it.
 
-The message is passed in as an object called msg. By convention it will have a ``msg.payload`` property containing the body of the message.
+The message is passed in as an object called msg. By convention, it will have a ``msg.payload`` property containing the body of the message.
 
 Other nodes may attach their own properties to the message, and they should be described in their documentation.
 
@@ -175,7 +175,7 @@ return [ outputMsgs ];
 
 #### Running code on start
 
-The Function node provides an On Start tab where you can provide code that will run whenever the node is started. This can be used to setup any state the Function node requires.
+The Function node provides an On Start tab where you can provide code that will run whenever the node is started. This can be used to set up any state the Function node requires.
 
 For example, it can initialise values in local context that the main Function will use:
 
@@ -594,7 +594,7 @@ Next, add a comment node to this group. You can then easily copy and paste this 
 
 #### The subflow
 
-Il existe une possibilité plus compacte qui permet de créer directement un noeud qui exécute cette fonctionnalité pour ensuite être disponible comme n'importe quel noeud dans une palette.
+There is a more compact option that allows you to create a node directly that performs this function, which can then be used like any other node in a palette.
 
 <div align="center">
 <figure>
@@ -605,9 +605,9 @@ Il existe une possibilité plus compacte qui permet de créer directement un noe
 </figure>
 </div>
 
-Ce noeud peut ensuite être utilisé dans n'importe quel flux, il suffira de lui adjoindre un noeud inject pour obtenir le nom du flow dans le volet de navigation debug.
+This node can then be used in any flow Simply add an inject node to it to display the flow’s name in the debug navigation pane.
 
-Il ne s'agit pas ici de montrer une fonction très utile, à savoir NR_FLOW_NAME, mais bien de comprendre comment créer un subflow simple.
+The aim here is not to demonstrate a very useful function, namely NR_FLOW_NAME, but rather to understand how to create a simple subflow.
 
 ---
 
