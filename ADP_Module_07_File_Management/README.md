@@ -292,6 +292,45 @@ Use CSV if:
 
 ---
 
+:warning: using both example of a structure with Node-RED, we have this kind of prolem.
+
+Converting a JSON object to a string, we get
+
+**With JSON**
+
+```json
+    {"ID":2001,
+     "Name":"Axes Velocity",
+     "Unit":"m/s",
+     "Value":0.1
+    },
+    {"ID":2002,
+     "Name":"Axes Acceleration",
+     "Unit":"m/s2",
+     "Value":0.5
+    },
+```
+
+**With XML**
+
+```xml
+<value>
+  <ID>2003</ID>
+  <Name>Axes Deceleration</Name>
+  <Unit>m/s2</Unit>
+  <Value>0.5</Value>
+</value>
+<value>
+  <ID>2004</ID>
+  <Name>Axes Jerk</Name>
+  <Unit>m/s3</Unit>
+  <Value>5</Value>
+</value>
+```
+<b style='color:red;'>With XML we have lost the distinction between strings and number</b> this can be a problem when reading back parameters to send them to a PLC!
+
+---
+
 ## When to use what?
 
 ### CSV → simplicity
@@ -366,5 +405,145 @@ Use CSV if:
 
 In the lab, we will learn how to handle CSV and JSON files in Node-RED using built-in and community nodes. You will learn to read, parse, transform, and write both formats, enabling integration of file-based data sources and outputs in automation workflows.
 
+### Finally with AI
+
+Short answer: **you can’t—at least not in plain XML itself.**
+
+XML is just a **text format**. Everything between tags is treated as a **string of characters** unless you add an external mechanism.
+
+---
+
+# 🧠 Why there is no native type
+
+In XML:
+
+```xml
+<Value>45.3</Value>
+<Value>Hello</Value>
+```
+
+Both are simply **text nodes**. The parser (like in Node-RED using xml2js) has **no built-in way** to know:
+
+* if `"45.3"` is a number
+* or just a string that looks like a number
+
+---
+
+# 🧩 How to differentiate types (real solutions)
+
+## 1. Use an XML Schema (XSD) ✅ (the “proper” way)
+
+You define the type explicitly using XML Schema (XSD):
+
+```xml
+<xs:element name="SensorOne" type="xs:float"/>
+```
+
+Then:
+
+```xml
+<SensorOne>45.3</SensorOne>
+```
+
+👉 A validator knows it's a **number**
+
+🔴 But:
+
+* Node-RED does **not automatically enforce XSD**
+* You’d need a validation step
+
+---
+
+## 2. Add type attributes manually (common in practice)
+
+```xml
+<SensorOne type="float">45.3</SensorOne>
+<SensorTwo type="string">Hello</SensorTwo>
+```
+
+Then in Node-RED:
+
+```json
+{
+  "SensorOne": {
+    "_": "45.3",
+    "$": { "type": "float" }
+  }
+}
+```
+
+👉 You can interpret it yourself in a Function node.
+
+---
+
+## 3. Use conventions (most common in Node-RED flows)
+
+Just assume:
+
+* numeric-looking strings → numbers
+* others → strings
+
+Example logic:
+
+```javascript
+let val = Number(x);
+return isNaN(val) ? x : val;
+```
+
+👉 This is what most people do in practice.
+
+---
+
+## 4. Use a typed XML format (less common but powerful)
+
+Some XML-based standards embed typing, for example:
+
+* OPC UA XML Encoding
+* SOAP XML Schema types
+
+Example:
+
+```xml
+<Value xsi:type="xs:float">45.3</Value>
+```
+
+👉 Now type is explicit—but requires compatible tooling.
+
+---
+
+# ⚠️ Important takeaway
+
+* XML itself = **no types**
+* Types come from:
+
+  * schema (XSD)
+  * attributes
+  * conventions
+  * or application logic
+
+---
+
+# 💡 In your Node-RED context
+
+The **best pragmatic approach** is:
+
+1. Disable arrays (`explicitArray = false`)
+2. Convert types in a Function node
+
+Because:
+
+* simple
+* robust
+* no dependency on schema validation
+
+---
+
+If you want, I can show you a **smart type inference function** (booleans, integers, floats, timestamps) instead of just `Number()` 👍
+
+## Conclusion
+On peut utiliser du XML pour un store restore de paramètres, mais ce n'est vraiment pas la manière la plus simple.
+
+Pour aller vite au but: JSON
+Si on a du temps pour faire quelque chose de vraiment robuste: XML.
 
 <!-- End of file -->
