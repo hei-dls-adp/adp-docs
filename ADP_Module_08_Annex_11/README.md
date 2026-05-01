@@ -7,9 +7,12 @@
 
 Author: [Cédric Lenoir](mailto:cedric.lenoir@hevs.ch)
 
-<b style='color:red;'>Draft</b>
+
 
 # Module 08 Annex 11
+
+For this module, <b style='color:red;'>please refer to the theoretical introduction of lab: </b>  [adp_lab_06_2026, appendix 11](https://github.com/hei-dls-adp/adp_lab_06_2026).
+
 
 What is Appendix 11 and what is its relevance to this course?
 
@@ -59,3 +62,5 @@ Above, we read: GMP, which is some basic rules of good practice.
 Good manufacturing practice, GMP, describes the minimum standard that a medicines manufacturer must meet in their production.
 
 We will see what our knowledge of Node-RED can bring us in this area.
+
+<!-- End of file -->

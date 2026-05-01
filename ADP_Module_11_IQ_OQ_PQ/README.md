@@ -7,7 +7,7 @@
 
 Author: [Cédric Lenoir](mailto:cedric.lenoir@hevs.ch)
 
-<b style='color:red;'>Draft</b>
+<b style='color:red;'>This module is part of lab 06 </b>. [See adp_lab_06_2026, annex 11.](https://github.com/hei-dls-adp/adp_lab_06_2026)
 
 # Module 11, IQ OQ PQ, mini project
 
