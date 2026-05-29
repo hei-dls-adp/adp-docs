@@ -59,7 +59,7 @@ This module presents Node-RED fundamentals for  writing functions to process mes
 
 **4h**
 
-Reading and writing on files with Node-RED. Practical examples in a **lab**.
+Reading and writing on files with Node-RED. See : [Lab 04, Management of CSV and JSON files](https://github.com/hei-dls-adp/adp_lab_04_2026).
 
 ## Module 08, Annex 11
 
@@ -69,19 +69,19 @@ Reading and writing on files with Node-RED. Practical examples in a **lab**.
 
 **4h**
 
-In a lab.
+[See LAB 05: Introduction to Data Storage and Visualisation](https://github.com/hei-dls-adp/adp_lab_05_2026).
 
 ## Module 10, URS + FS + DS
 
 **4h**
 
-Theory + workshop in the lab.
+Theory + workshop in the lab, see [adp_lab_06_2026, annex 11](https://github.com/hei-dls-adp/adp_lab_06_2026).
 
 ## Module 11 IQ, OQ, PQ
 
 **4h**
 
-Theory + workshop in a lab.
+Theory + workshop in the lab, see [adp_lab_06_2026, annex 11](https://github.com/hei-dls-adp/adp_lab_06_2026).
 
 ---
 
