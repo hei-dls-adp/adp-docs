@@ -687,14 +687,17 @@ You can add mode detailled information in markdown format and display it in the 
 > About message Id, it is coded on 8 bytes. Here an example to get the 64 bit unsigned value of **_msgid**.
 
 ```js
-// var myHex = "d05a3b7f70b3e37f";
-var myHex = msg._msgid;
+let myHex = msg._msgid;
 
 // conversion précise en BigInt (unsigned)
-var asBigInt = BigInt("0x" + myHex);
+let asBigInt = BigInt("0x" + myHex);
 msg.payload = asBigInt
 return msg;
 ```
+
+#### let, var or const ?
+**const** is for constant value, once assigned, you cannot change the value.
+**var**, although sometimes used, is considered obsolete; it is preferable to use **let**.
 
 ---
 

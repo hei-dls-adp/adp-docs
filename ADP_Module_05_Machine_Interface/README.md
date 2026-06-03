@@ -706,7 +706,7 @@ Build value to **Write**.
 
 ```js
 // Make value to write
-var newMsg = {}
+let newMsg = {}
 if (msg.payload.value != null){
     newMsg.payload = {"type":"float","value":Number(msg.payload.value)}
 }

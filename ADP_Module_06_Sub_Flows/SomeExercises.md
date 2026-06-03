@@ -104,7 +104,7 @@ In the function, you can use the environment parameters to customize the message
 :bulb: please, try to understand the code below, use an IA if needed. You do not need to know the syntax, but your should be able to modify it for different uses
 
 ```js
-var getNumber = 1;
+let getNumber = 1;
 
 // We create a ui_update object
 msg.ui_update = {};

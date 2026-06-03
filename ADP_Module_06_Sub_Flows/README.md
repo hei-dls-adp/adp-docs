@@ -67,7 +67,7 @@ If the function returns null, then no message is passed on and the flow ends.
 The returned message object does not need to be same object as was passed in; the function can construct a completely new object before returning it. For example:
 
 ```js
-var newMsg = { payload: msg.payload.length };
+let newMsg = { payload: msg.payload.length };
 return newMsg;
 ```
 
@@ -121,7 +121,7 @@ if (msg.payload === "Sensor One") {
 The following example passes the original message as-is on the first output and a message containing the payload length is passed to the second output:
 
 ```js
-var newMsg = { payload: msg.payload.length };
+let newMsg = { payload: msg.payload.length };
 return [msg, newMsg];
 ```
 
@@ -155,19 +155,19 @@ A function can return multiple messages on an output by returning an array of me
 In the following example, msg1, msg2, msg3 will be sent to the first output. msg4 will be sent to the second output.
 
 ```js
-var msg1 = { payload:"first out of output 1" };
-var msg2 = { payload:"second out of output 1" };
-var msg3 = { payload:"third out of output 1" };
-var msg4 = { payload:"only message from output 2" };
+let msg1 = { payload:"first out of output 1" };
+let msg2 = { payload:"second out of output 1" };
+let msg3 = { payload:"third out of output 1" };
+let msg4 = { payload:"only message from output 2" };
 return [ [ msg1, msg2, msg3 ], msg4 ];
 ```
 
 The following example splits the received payload into individual words and returns a message for each of the words.
 
 ```js
-var outputMsgs = [];
-var words = msg.payload.split(" ");
-for (var w in words) {
+let outputMsgs = [];
+let words = msg.payload.split(" ");
+for (let w in words) {
     outputMsgs.push({payload:words[w]});
 }
 return [ outputMsgs ];
@@ -428,7 +428,7 @@ context.set('counter', 0);
 For example in a function:
 
 ```js
-var _counter = context.get('counter');
+let _counter = context.get('counter');
 _counter++;
 context.set('counter', _counter);
 
@@ -508,7 +508,7 @@ Example, get ``NR_FLOW_NAME``.
 Using javascript in a function
 
 ```js
-var newMsg = {}
+let newMsg = {}
 
 newMsg.payload = env.get("NR_FLOW_NAME");
 
