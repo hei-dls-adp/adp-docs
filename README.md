@@ -55,29 +55,28 @@ This module covers machine interfaces and industrial communication protocols, fo
 **2h**
 This module presents Node-RED fundamentals for  writing functions to process messages, managing variables across different scopes, **global**, **flow**, node, and environment, and creating reusable **subflows** to encapsulate and organize automation logic for production environments.
 
-## Module 07, File Management
+## Module 07, [File Management](https://github.com/hei-dls-adp/adp_lab_04_2026)
 
 **4h**
 
 Reading and writing on files with Node-RED. See : [Lab 04, Management of CSV and JSON files](https://github.com/hei-dls-adp/adp_lab_04_2026).
 
-## Module 08, Annex 11
+## Module 08, [Annex 11](https://github.com/hei-dls-adp/adp-docs/tree/main/ADP_Module_08_Annex_11)
 
 **2h** Introduction to good manufacturing practices.
 
-## Module 09, Grafana + InfluxDB
+## Module 09, [Data Storage and Visualisation](https://github.com/hei-dls-adp/adp_lab_05_2026)
 
 **4h**
 
-[See LAB 05: Introduction to Data Storage and Visualisation](https://github.com/hei-dls-adp/adp_lab_05_2026).
 
-## Module 10, URS + FS + DS
+## Module 10, Small project, URS + FS + DS
 
 **4h**
 
 Theory + workshop in the lab, see [adp_lab_06_2026, annex 11](https://github.com/hei-dls-adp/adp_lab_06_2026).
 
-## Module 11 IQ, OQ, PQ
+## Module 11, Small project, IQ, OQ, PQ
 
 **4h**
 
@@ -85,18 +84,13 @@ Theory + workshop in the lab, see [adp_lab_06_2026, annex 11](https://github.com
 
 ---
 
-# List of Labs
-## Lab 01, [Modules 01 & 02, in practice](https://github.com/hei-dls-adp/adp-lab-01_2026).
-*Prerequisites: modules 01 et 02.*
-This lab presents **practical examples** designed to demonstrate, on a small demonstration conveyor, some basic concepts of industrial or laboratory automation.
+## List of Labs
 
-## Lab 02, Node-RED [Dashboard Hands-on](https://github.com/hei-dls-adp/adp_lab_02_2026)
-*Practical application of module 04,*
-
-## Lab 03, [Connect to the robot](https://github.com/hei-dls-adp/adp_lab_03_2026).
-*Practical application of module 05,*
-
-## [Lab report template](./Lab_Report_Template/README.md)
-Use it for your report.
+  1. [Introduction to PLC](https://github.com/hei-dls-adp/adp_lab_01_2026)
+  2. [Flow Based Programming](https://github.com/hei-dls-adp/adp_lab_02_2026)
+  3. [Machine Interface](https://github.com/hei-dls-adp/adp_lab_03_2026)
+  4. [Management of CSV and JSON files](https://github.com/hei-dls-adp/adp_lab_04_2026)
+  5. [Data Storage and Visualisation](https://github.com/hei-dls-adp/adp_lab_05_2026)
+  6. [Project management according & annex 11/GMP, 2 labs](https://github.com/hei-dls-adp/adp_lab_06_2026)
 
 <!-- End of file -->
